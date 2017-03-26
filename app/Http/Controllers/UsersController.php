@@ -44,4 +44,12 @@ class UsersController extends Controller
         'id' => $user->id
       ]);
     }
+
+    public function destroy($id)
+    {
+      $user = User::whereId($id)->first();
+      $user->delete();
+
+      return Redirect::action('UsersController@index');
+    }
 }
