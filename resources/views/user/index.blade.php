@@ -12,10 +12,14 @@
         <span>
           {{ $user['email'] }}
         </span>
-        <form method="POST" action="/user/{{ $user['id'] }}" style="display:inline;">
+        <form method="POST" action="/user/{{ $user->id }}" style="display:inline;">
             {!! csrf_field() !!}
             {{ method_field('DELETE') }}
             <button type="submit">Delete</button>
+        </form>
+        <form method="GET" action="/user/{{ $user->id }}/edit" style="display:inline;">
+            {!! csrf_field() !!}
+            <button type="submit">Edit</button>
         </form>
       </li>
     @endforeach

@@ -5,7 +5,7 @@ namespace App\Http\Requests\Users;
 use Auth;
 use App\Http\Requests\Request;
 
-class StoreUserRequest extends Request
+class UpdateUserRequest extends Request
 {
   public function authorize()
   {
@@ -16,9 +16,7 @@ class StoreUserRequest extends Request
   {
     return [
       'name' => 'required',
-      'email' => 'required|email',
-      'password' => 'required|min:3|confirmed',
-      'password_confirmation' => 'required|same:password'
+      'email' => 'required|email'
     ];
   }
 }

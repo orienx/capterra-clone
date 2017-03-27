@@ -10,6 +10,7 @@ use Input;
 use Redirect;
 use App\User;
 use App\Http\Requests\Users\StoreUserRequest;
+use App\Http\Requests\Users\UpdateUserRequest;
 
 class UsersController extends Controller
 {
@@ -51,5 +52,26 @@ class UsersController extends Controller
       $user->delete();
 
       return Redirect::action('UsersController@index');
+    }
+
+    public function edit($id) {
+      $user = User::whereId($id)->first();
+
+      return view('user/edit', compact('user'));
+    }
+
+    public function update(UpdateUserRequest $request, $id) {
+      $user = User::whereId($id)->first();
+
+      $user->update([
+        'name' => Input::get('name'),
+        'email' => Input::get('email')
+      ]);
+
+      $user->save();
+
+      return Redirect::action('UsersController@show', [
+        'id' => $user->id
+      ]);
     }
 }

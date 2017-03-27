@@ -11,7 +11,7 @@
 |
 */
 
-Route::resource('/', 'PagesController');
+Route::get('/', 'PagesController@index');
 
 Route::resource('/user', 'UsersController');
 
