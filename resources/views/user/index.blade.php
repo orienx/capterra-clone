@@ -8,12 +8,8 @@
   <ul>
     @foreach($users as $user)
       <li>
-        <a href="/user/{{ $user['id'] }}">
-          {{ $user['name'] }}
-        </a>
-        <span>
-          {{ $user['email'] }}
-        </span>
+        <a href="/user/{{ $user['id'] }}">{{ $user['name'] }}</a>
+        <span>{{ $user['email'] }}</span>
         <form method="POST" action="/user/{{ $user->id }}" style="display:inline;">
             {!! csrf_field() !!}
             {{ method_field('DELETE') }}
