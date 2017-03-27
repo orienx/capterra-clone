@@ -8,7 +8,7 @@
     @include('elements/errors')
     <div>
       <label for="name">Name:</label>
-      <input type="text" name="name" id="name" value="{{ $user->name }}" required />
+      <input type="text" name="name" id="name" value="{{ $user->profile->name }}" required />
     </div>
     <div>
       <label for="email">Email:</label>

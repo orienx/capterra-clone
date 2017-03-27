@@ -13,7 +13,6 @@ class User extends Authenticatable
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'name', 
         'email', 
         'password',
         'deleted_at'
@@ -23,4 +22,9 @@ class User extends Authenticatable
         'password', 
         'remember_token'
     ];
+
+    public function profile()
+    {
+        return $this->hasOne('App\Profile');
+    }
 }

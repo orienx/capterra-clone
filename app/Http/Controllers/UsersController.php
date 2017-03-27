@@ -37,9 +37,12 @@ class UsersController extends Controller
     public function store(StoreUserRequest $request)
     {
       $user = User::create([
-        'name' => Input::get('name'),
         'email' => Input::get('email'),
         'password' => bcrypt(Input::get('password'))
+      ]);
+
+      $profile = $user->profile()->create([
+        'name' => Input::get('name')
       ]);
 
       return Redirect::action('UsersController@show', [
@@ -67,8 +70,11 @@ class UsersController extends Controller
       $user = User::whereId($id)->first();
 
       $user->update([
-        'name' => Input::get('name'),
         'email' => Input::get('email')
+      ]);
+
+      $user->profile->update([
+        'name' => Input::get('name')
       ]);
 
       $user->save();
