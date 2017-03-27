@@ -2,8 +2,7 @@
 
 @section('content')
   <a href="/">< Back</a>
-  <a href="/auth/register">+ Register</a>
-  <a href="/password/email">+ Reset Password</a>
+  <a href="/password/email">Reset Password</a>
   <form method="POST" action="/auth/login" style="line-height: 32px">
     {!! csrf_field() !!}
     @include('elements/errors')

@@ -10,6 +10,7 @@ use Input;
 use Redirect;
 use App\User;
 use App\Http\Requests\Users\StoreUserRequest;
+use App\Http\Requests\Users\DeleteUserRequest;
 use App\Http\Requests\Users\UpdateUserRequest;
 
 class UsersController extends Controller
@@ -46,7 +47,7 @@ class UsersController extends Controller
       ]);
     }
 
-    public function destroy($id)
+    public function destroy(DeleteUserRequest $request, $id)
     {
       $user = User::whereId($id)->first();
       $user->delete();
@@ -54,13 +55,15 @@ class UsersController extends Controller
       return Redirect::action('UsersController@index');
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
       $user = User::whereId($id)->first();
 
       return view('user/edit', compact('user'));
     }
 
-    public function update(UpdateUserRequest $request, $id) {
+    public function update(UpdateUserRequest $request, $id)
+    {
       $user = User::whereId($id)->first();
 
       $user->update([
@@ -70,8 +73,6 @@ class UsersController extends Controller
 
       $user->save();
 
-      return Redirect::action('UsersController@show', [
-        'id' => $user->id
-      ]);
+      return Redirect::action('UsersController@index');
     }
 }

@@ -2,11 +2,14 @@
 
 @section('content')
   <a href="/user/">Users</a>
-  <a href="/auth/register">+ Register</a>
-  <a href="/auth/login">+ Login</a>
-  <a href="/auth/logout">+ Logout</a>
+  @if(!$signedIn)
+    <a href="/auth/register">Register</a>
+  @endif
   <hr />
   @if($signedIn)
-  Logged in as: {{ $currentUser->name }}
+    Logged in as: {{ $currentUser->name }} 
+    <a href="/auth/logout">Logout</a>
+  @else
+    <a href="/auth/login">Login</a>
   @endif
 @stop

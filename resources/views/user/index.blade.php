@@ -2,7 +2,9 @@
 
 @section('content')
   <a href="/">< Back</a>
-  <a href="/user/create">+ Create User</a>
+  @if($signedIn)
+    <a href="/user/create">Create User</a>
+  @endif
   <ul>
     @foreach($users as $user)
       <li>

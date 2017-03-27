@@ -2,7 +2,6 @@
 
 @section('content')
   <a href="/">< Back</a>
-  <a href="/auth/login">+ Login</a>
   <form method="POST" action="/auth/register" style="line-height: 32px">
     {!! csrf_field() !!}
     @include('elements/errors')
