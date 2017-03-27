@@ -7,7 +7,8 @@
   @endif
   <hr />
   @if($signedIn)
-    Logged in as: {{ $currentUser->profile->name }} 
+    Logged in as: 
+    <a href="/settings/profile">{{ $currentUser->profile->name }}</a>
     <a href="/auth/logout">Logout</a>
   @else
     <a href="/auth/login">Login</a>

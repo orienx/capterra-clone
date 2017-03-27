@@ -8,7 +8,7 @@
     @include('elements/errors')
     <div>
       <label for="email">Email</label>
-      <input type="email" name="email" id="email" reguired />
+      <input type="email" name="email" id="email" required />
     </div>
     <div>
       <label for="password">Password</label>

@@ -21,6 +21,10 @@
       <label for="password_confirmation">Password Confirm:</label>
       <input type="password" name="password_confirmation" id="password_confirmation" required />
     </div>
+    <div>
+      <label for="about" style="display:block;">About</label>
+      <textarea name="about" id="about"></textarea>
+    </div>
     <button type="submit">Create</button>
   </form>
 @stop

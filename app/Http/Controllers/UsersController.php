@@ -42,7 +42,8 @@ class UsersController extends Controller
       ]);
 
       $profile = $user->profile()->create([
-        'name' => Input::get('name')
+        'name' => Input::get('name'),
+        'about' => Input::get('about')
       ]);
 
       return Redirect::action('UsersController@show', [
@@ -74,7 +75,8 @@ class UsersController extends Controller
       ]);
 
       $user->profile->update([
-        'name' => Input::get('name')
+        'name' => Input::get('name'),
+        'about' => Input::get('about')
       ]);
 
       $user->save();
