@@ -70,7 +70,7 @@ class AuthController extends Controller
     ]);
 
     $profile = $user->profile()->create([
-      'name' => data['name']
+      'name' => $data['name']
     ]);
 
     return $user;
