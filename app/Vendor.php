@@ -17,13 +17,8 @@ class Vendor extends Model
       'deleted_at'
     ];
 
-    // public function users()
-    // {
-    //   return $this->belongsToMany('App\User');
-    // }
-
-    // public function addUser($id)
-    // {
-    //   return $this->attatch($id);
-    // }
+    public function users()
+    {
+      return $this->belongsToMany('App\User');
+    }
 }

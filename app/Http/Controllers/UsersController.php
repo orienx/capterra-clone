@@ -26,7 +26,9 @@ class UsersController extends Controller
     {
       $user = User::findOrFail($id);
 
-      return view('user/show', compact('user'));
+      $hasVendors = count($user->vendors);
+
+      return view('user/show', compact('user', 'hasVendors'));
     }
 
     public function create()
