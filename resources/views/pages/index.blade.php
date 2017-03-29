@@ -2,6 +2,7 @@
 
 @section('content')
   <a href="/user/">Users</a>
+  <a href="/vendors/">Vendors</a>
   @if(!$signedIn)
     <a href="/auth/register">Register</a>
   @endif

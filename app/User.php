@@ -27,4 +27,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Profile');
     }
+
+    public function vendors()
+    {
+        return $this->belongsToMany('App\Vendor');
+    }
 }

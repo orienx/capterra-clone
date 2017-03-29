@@ -14,6 +14,7 @@
 Route::get('/', 'PagesController@index');
 
 Route::resource('/user', 'UsersController');
+Route::resource('/vendors', 'VendorsController');
 
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -29,3 +30,4 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 Route::get('settings/profile', 'SettingsController@getProfile');
 Route::post('settings/profile', 'SettingsController@postProfile');
+
