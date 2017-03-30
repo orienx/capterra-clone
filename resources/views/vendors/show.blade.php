@@ -8,6 +8,7 @@
   </ul>
   @if($hasUsers)
     <h3>Users</h3>
+    <a href="/vendors/{{ $vendor->id }}/adduser">Add User</a>
     <ul>
       @foreach($vendor->users as $user)
         <li>

@@ -13,6 +13,7 @@ use App\User;
 use App\Http\Requests\Vendors\StoreVendorRequest;
 use App\Http\Requests\Vendors\DeleteVendorRequest;
 use App\Http\Requests\Vendors\UpdateVendorRequest;
+use App\Http\Requests\Vendors\AddUserToVendorRequest;
 
 class VendorsController extends Controller
 {
@@ -76,6 +77,26 @@ class VendorsController extends Controller
       ]);
 
       $vendor->save();
+
+      return Redirect::action('VendorsController@index');
+    }
+
+    public function getAddUserToVendor($id)
+    {
+      $vendor = Vendor::whereId($id)->first();
+
+      $users = User::all();
+
+      return view('vendors/adduser', compact('vendor', 'users'));
+    }
+
+    public function postAddUserToVendor(AddUserToVendorRequest $request, $id)
+    {
+      $vendor = Vendor::whereId($id)->first();
+
+      $user = User::whereId(Input::get('id'))->first();
+
+      $user->vendors()->attach($vendor->id);
 
       return Redirect::action('VendorsController@index');
     }

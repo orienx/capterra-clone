@@ -13,9 +13,6 @@
 
 Route::get('/', 'PagesController@index');
 
-Route::resource('/user', 'UsersController');
-Route::resource('/vendors', 'VendorsController');
-
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@logout');
@@ -31,3 +28,7 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 Route::get('settings/profile', 'SettingsController@getProfile');
 Route::post('settings/profile', 'SettingsController@postProfile');
 
+Route::resource('/user', 'UsersController');
+Route::resource('/vendors', 'VendorsController');
+Route::get('/vendors/{id}/adduser', 'VendorsController@getAddUserToVendor');
+Route::post('/vendors/{id}/adduser', 'VendorsController@postAddUserToVendor');
