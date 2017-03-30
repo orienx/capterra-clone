@@ -85,7 +85,11 @@ class VendorsController extends Controller
     {
       $vendor = Vendor::whereId($id)->first();
 
-      $users = User::all();
+      $vendorId = $vendor->id;
+
+      $users = User::whereDoesntHave('vendors', function($q) use ($vendorId) {
+        $q->where('vendor_id', $vendorId);
+      })->get();
 
       return view('vendors/adduser', compact('vendor', 'users'));
     }
@@ -96,8 +100,8 @@ class VendorsController extends Controller
 
       $user = User::whereId(Input::get('id'))->first();
 
-      $user->vendors()->attach($vendor->id);
+      $user->vendors()->syncWithoutDetaching([$vendor->id]);
 
-      return Redirect::action('VendorsController@index');
+      return Redirect::action('VendorsController@show', $vendor->id);
     }
 }
