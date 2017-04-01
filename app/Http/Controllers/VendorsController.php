@@ -91,7 +91,9 @@ class VendorsController extends Controller
         $q->where('vendor_id', $vendorId);
       })->get();
 
-      return view('vendors/adduser', compact('vendor', 'users'));
+      $hasUsers = count($users);
+
+      return view('vendors/adduser', compact('vendor', 'users', 'hasUsers'));
     }
 
     public function postAddUserToVendor(AddUserToVendorRequest $request, $id)
@@ -103,5 +105,16 @@ class VendorsController extends Controller
       $user->vendors()->syncWithoutDetaching([$vendor->id]);
 
       return Redirect::action('VendorsController@show', $vendor->id);
+    }
+
+    public function removeUserFromVendor($id)
+    {
+      $vendor = Vendor::whereId($id)->first();
+
+      $user = User::whereId(Input::get('id'))->first();
+
+      $user->vendors()->detach();
+
+      return Redirect::action('VendorsController@show', 24);
     }
 }

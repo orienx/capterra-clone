@@ -32,3 +32,4 @@ Route::resource('/user', 'UsersController');
 Route::resource('/vendors', 'VendorsController');
 Route::get('/vendors/{id}/adduser', 'VendorsController@getAddUserToVendor');
 Route::post('/vendors/{id}/adduser', 'VendorsController@postAddUserToVendor');
+Route::delete('/vendors/{id}/removeuser', 'VendorsController@removeUserFromVendor');
