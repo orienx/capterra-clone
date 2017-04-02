@@ -1,7 +1,7 @@
 @extends('layout/public')
 
 @section('content')
-  <a href="/vendors/">< Back</a>
+  <a href="{{ action('VendorsController@index') }}">< Back</a>
   <h3>Details</h3>
   <ul>
     <li>Name: {{ $vendor->name }}</li>
@@ -10,8 +10,8 @@
     <h3>Users</h3>    <ul>
       @foreach($vendor->users as $user)
         <li>
-          <a href="/user/{{ $user->id }}">{{ $user->profile->name }}</a>
-          <form method="POST" action="/vendors/{{ $vendor->id }}/removeuser" style="display:inline;">
+          <a href="{{ action('UsersController@show', ['id' => $user->id]) }}">{{ $user->profile->name }}</a>
+          <form method="POST" action="{{ action('VendorsController@removeUserFromVendor', ['id' => $vendor->id]) }}" style="display:inline;">
               {!! csrf_field() !!}
               {{ method_field('DELETE') }}
               <input type="hidden" id="id" name="id" value="{{ $user->id }}" />
@@ -21,5 +21,5 @@
       @endforeach
     </ul>
   @endif
-  <a href="/vendors/{{ $vendor->id }}/adduser">Add User</a>
+  <a href="{{ action('VendorsController@getAddUserToVendor', ['id' => $vendor->id]) }}">Add User</a>
 @stop

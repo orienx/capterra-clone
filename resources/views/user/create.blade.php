@@ -1,8 +1,8 @@
 @extends('layout/public')
 
 @section('content')
-  <a href="/user/">< Back</a>
-  <form method="POST" action="/user"  style="line-height: 32px">
+  <a href="{{ action('UsersController@index') }}">< Back</a>
+  <form method="POST" action="{{ action('UsersController@store') }}"  style="line-height: 32px">
     {!! csrf_field() !!}
     @include('elements/errors')
     <div>

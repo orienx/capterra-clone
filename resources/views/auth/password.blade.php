@@ -1,8 +1,8 @@
 @extends('layout/public')
 
 @section('content')
-  <a href="/auth/login">< Back</a>
-  <form method="POST" action="/password/email" style="line-height: 32px">
+  <a href="{{ action('Auth\AuthController@getLogin') }}">< Back</a>
+  <form method="POST" action="{{ action('Auth\PasswordController@getEmail') }}" style="line-height: 32px">
     {!! csrf_field() !!}
     @include('elements/errors')
     <div>

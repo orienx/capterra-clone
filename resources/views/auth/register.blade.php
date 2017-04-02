@@ -1,8 +1,8 @@
 @extends('layout/public')
 
 @section('content')
-  <a href="/">< Back</a>
-  <form method="POST" action="/auth/register" style="line-height: 32px">
+  <a href="{{ action('PagesController@index') }}">< Back</a>
+  <form method="POST" action="{{ action('Auth\AuthController@getRegister') }}" style="line-height: 32px">
     {!! csrf_field() !!}
     @include('elements/errors')
     <div>

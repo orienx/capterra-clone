@@ -1,8 +1,8 @@
 @extends('layout/public')
 
 @section('content')
-  <a href="/user/">< Back</a>
-  <form method="POST" action="/user/{{ $user->id }}"  style="line-height: 32px">
+  <a href="{{ action('UsersController@index') }}">< Back</a>
+  <form method="POST" action="{{ action('UsersController@update', ['id' => $user->id]) }}"  style="line-height: 32px">
     {!! csrf_field() !!}
     {{ method_field('PUT') }}
     @include('elements/errors')

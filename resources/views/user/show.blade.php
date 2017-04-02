@@ -1,7 +1,7 @@
 @extends('layout/public')
 
 @section('content')
-  <a href="/user/">< Back</a>
+  <a href="{{ action('UsersController@index') }}">< Back</a>
   <h3>Details</h3>
   <ul>
     <li>Name: {{ $user->profile->name }}</li>
@@ -14,7 +14,7 @@
     <ul>
       @foreach($user->vendors as $vendor)
         <li>
-          <a href="/vendors/{{ $vendor->id }}">{{ $vendor->name }}</a>
+          <a href="{{ action('VendorsController@show', ['id' => $vendor->id]) }}">{{ $vendor->name }}</a>
         </li>
       @endforeach
     </ul>

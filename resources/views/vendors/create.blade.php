@@ -1,8 +1,8 @@
 @extends('layout/public')
 
 @section('content')
-  <a href="/vendors/">< Back</a>
-  <form method="POST" action="/vendors"  style="line-height: 32px">
+  <a href="{{ action('VendorsController@index') }}">< Back</a>
+  <form method="POST" action="{{ action('VendorsController@store') }}"  style="line-height: 32px">
     {!! csrf_field() !!}
     @include('elements/errors')
     <div>

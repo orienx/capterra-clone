@@ -115,6 +115,6 @@ class VendorsController extends Controller
 
       $user->vendors()->detach();
 
-      return Redirect::action('VendorsController@show', 24);
+      return Redirect::action('VendorsController@show', $vendor->id);
     }
 }
